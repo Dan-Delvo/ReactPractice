@@ -8,6 +8,7 @@ export default function User(){
 
     return (
         <>
+        
             <h1>TEAM POPBERRY</h1>
             <p>Online Document Request and Management System</p>
 
@@ -22,6 +23,7 @@ export default function User(){
                     })
                 }
             </ul>
+
         </>
     )
 }

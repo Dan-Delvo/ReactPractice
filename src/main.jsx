@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client'
 import App from './App'
 import ParentComponent from './ParentComponent'
 import Users from './NameList'
+import ButtonPress from './StateOfTheNation'
+import tryLang from './StateOfTheNation'
 
 
 // function App() {
@@ -14,5 +16,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <App />
     <ParentComponent />
     <Users />
+    <ButtonPress />
+    <tryLang name={true} />
   </React.StrictMode>,
 )
