@@ -18,6 +18,41 @@ function App() {
       )
 }
 
+function Clicky() {
+  const handleClick = (event) => {
+    console.log("Helloworld")
+    console.log(event)
+  }
 
+  return(
+    <button onClick={handleClick}>ClickME</button>
+  )
+
+
+}
+
+function HideAndSeek() {
+  const [paragraph, setParagraph] = useState(true)
+
+  const toggleStatus = () => {setParagraph(!paragraph)};
+
+
+  return(
+    <>
+
+      <h1> Change UI Based on click</h1>
+      {paragraph && ( //if paragraph true papakita niya to && is like if
+        <p> This is paragraph</p>
+      )}
+
+      <button onClick={toggleStatus}>
+        {paragraph ? 'Hide' : 'Show'} Paragraph
+      </button>
+
+    </>
+  )
+
+
+}
 
 export default App

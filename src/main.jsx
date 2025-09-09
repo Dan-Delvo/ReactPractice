@@ -5,6 +5,8 @@ import ParentComponent from './ParentComponent'
 import Users from './NameList'
 import ButtonPress from './StateOfTheNation'
 import tryLang from './StateOfTheNation'
+import Clicky from './clicky'
+import HideAndSeek from './Hide'
 
 
 // function App() {
@@ -17,6 +19,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <ParentComponent />
     <Users />
     <ButtonPress />
-    <tryLang name={true} />
+    <Clicky />    
+    <HideAndSeek />
   </React.StrictMode>,
 )
