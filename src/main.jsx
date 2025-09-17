@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App'
+import App, {Form, ApiTypeShi, WeatherWeatherLang} from './App'
 import ParentComponent from './ParentComponent'
 import Users from './NameList'
 import ButtonPress from './StateOfTheNation'
@@ -21,5 +21,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <ButtonPress />
     <Clicky />    
     <HideAndSeek />
+    <Form />
+    <ApiTypeShi />
+    <WeatherWeatherLang />
   </React.StrictMode>,
 )

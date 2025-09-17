@@ -17,9 +17,7 @@ export default function HideAndSeek() {
         {paragraph ? 'Hide' : 'Show'} Paragraph
       </button>
       
-      <button className='px-5 py-2 text-white bg-blue-500 border-2'>
-  Subscribe
-</button>
+      
 
     </>
   )
