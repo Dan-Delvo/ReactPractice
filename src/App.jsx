@@ -118,25 +118,36 @@ function ApiTypeShi() {
 }
 
 function WeatherWeatherLang() {
-  const [title, setTitle] = useState("");
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     getData();
   }, []);
 
   const getData = async () => {
-    const response = await fetch('http://localhost:5097/weatherforecast');
+    const response = await fetch('http://localhost:5150/weatherforecast');
     const task = await response.json();
+    setData(task);
 
-    console.log (task)
-    setTitle(task[1].summary)
+
 
   }
 
     return (
       <>
-       <h1>{title} kasdjkasldj</h1>
-       <p>kamustasa kalabasa</p>
+        {data.map((item, index) => (
+          <>
+          <div key={index}>
+            <h1> Date: {item.date} </h1>
+            <p> Summary: {item.summary} </p>
+            <p> Temp C: {item.temperatureC} </p>
+            <p> Temp F: {item.temperatureF} </p>
+          </div>
+          </>
+        )
+        
+        )}
+
       </>
     );
 }
