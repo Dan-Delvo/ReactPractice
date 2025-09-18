@@ -6,7 +6,13 @@ import Users from './NameList'
 import ButtonPress from './StateOfTheNation'
 import tryLang from './StateOfTheNation'
 import Clicky from './clicky'
-import HideAndSeek from './Hide'
+import './index.css';
+import LetterGlitch from './LetterGlitch';
+  
+
+
+
+
 
 
 // function App() {
@@ -15,14 +21,16 @@ import HideAndSeek from './Hide'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    {/* <App />
     <ParentComponent />
     <Users />
     <ButtonPress />
     <Clicky />    
     <HideAndSeek />
     <Form />
-    <ApiTypeShi />
-    <WeatherWeatherLang />
+    <ApiTypeShi /> */}
+    <LetterGlitch glitchSpeed={50} centerVignette>
+      <WeatherWeatherLang />
+    </LetterGlitch>
   </React.StrictMode>,
 )

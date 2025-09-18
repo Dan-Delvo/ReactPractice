@@ -1,6 +1,24 @@
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { Fragment } from 'react'
+import SevereColdIcon from '@mui/icons-material/SevereCold';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from "@mui/material/Typography";
+import AcUnitIcon from "@mui/icons-material/AcUnit";       // Bracing
+import AcUnitOutlinedIcon from "@mui/icons-material/AcUnitOutlined"; // Chilly
+import CloudIcon from "@mui/icons-material/Cloud";         // Cool
+import WbSunnyIcon from "@mui/icons-material/WbSunny";     // Mild
+import Brightness5Icon from "@mui/icons-material/Brightness5"; // Warm
+import SpaIcon from "@mui/icons-material/Spa";             // Balmy
+import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment"; // Hot
+import WhatshotIcon from "@mui/icons-material/Whatshot";   // Sweltering
+import FlareIcon from "@mui/icons-material/Flare";         // Scorching
+import ASCIIText from './ASCIIText';
+import GlassSurface from './GlassSurface'
+
+
+
   
 function App() {
       const helloElement = <h1>Hello World</h1>
@@ -119,37 +137,102 @@ function ApiTypeShi() {
 
 function WeatherWeatherLang() {
   const [data, setData] = useState([]);
+  const bull = <span>•</span>;
+
 
   useEffect(() => {
     getData();
   }, []);
 
   const getData = async () => {
-    const response = await fetch('http://localhost:5150/weatherforecast');
+    const response = await fetch('http://localhost:5097/weatherforecast');
     const task = await response.json();
     setData(task);
-
-
-
   }
 
-    return (
-      <>
-        {data.map((item, index) => (
-          <>
-          <div key={index}>
-            <h1> Date: {item.date} </h1>
-            <p> Summary: {item.summary} </p>
-            <p> Temp C: {item.temperatureC} </p>
-            <p> Temp F: {item.temperatureF} </p>
-          </div>
-          </>
-        )
-        
-        )}
+  const weatherIcons = {
+  Freezing: <SevereColdIcon color="primary" fontSize="large" />,
+  Bracing: <AcUnitIcon color="info" fontSize="large" />,
+  Chilly: <AcUnitOutlinedIcon color="info" fontSize="large" />,
+  Cool: <CloudIcon color="action" fontSize="large" />,
+  Mild: <WbSunnyIcon color="warning" fontSize="large" />,
+  Warm: <Brightness5Icon color="warning" fontSize="large" />,
+  Balmy: <SpaIcon color="success" fontSize="large" />,
+  Hot: <LocalFireDepartmentIcon color="error" fontSize="large" />,
+  Sweltering: <WhatshotIcon color="error" fontSize="large" />,
+  Scorching: <FlareIcon color="error" fontSize="large" />
+};
 
-      </>
-    );
+  return (
+    <>
+      <header
+        style={{
+          width: "100%",
+          height: "200px",
+          position: "relative",
+          overflow: "hidden"
+        }}
+      >
+        <ASCIIText
+          text="WEATHER"
+          asciiFontSize={5}
+          textFontSize={200}
+          planeBaseHeight={6}
+          enableWaves={false}
+        />
+      </header>
+
+      <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "1rem", padding: "2rem" }}>
+        {data.map((item, index) => (
+          <GlassSurface
+            key={index}
+            width={300}
+            height={200}
+            borderRadius={24}
+            blur={25}          // strong blur for frosted effect
+            opacity={0.8}      // semi-transparent
+            brightness={30}  
+            className="my-custom-class"
+            style={{ border: '1px solid rgba(255,255,255,0.1)' }} 
+          >
+            <Card
+              sx={{
+                width: 265,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                textAlign: 'center',
+                padding: "1rem",
+                textColor: "white",
+                color: "white", 
+                backgroundColor: "transparent", // allow glass effect to show
+                boxShadow: "none" // optional, remove default MUI shadow
+              }}
+            >
+              <CardContent>
+                {weatherIcons[item.summary] || null}
+                <Typography gutterBottom sx={{ color: 'white', fontSize: 14 }}>
+                  Weather for Day:
+                </Typography>
+                <Typography variant="h5" component="div">
+                  {item.date}
+                </Typography>
+                <Typography sx={{ color: 'white', mb: 1.5 }}>Date</Typography>
+                <Typography variant="body2">
+                  Summary: {item.summary}
+                  <br />
+                  Temp C: {item.temperatureC}
+                  <br />
+                  Temp F: {item.temperatureF}
+                </Typography>
+              </CardContent>
+            </Card>
+          </GlassSurface>
+        ))}
+      </div>
+    </>
+  );
+
 }
 
 export default App
